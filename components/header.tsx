@@ -20,7 +20,7 @@ export const HeroHeader = () => {
     const [rotation, setRotation] = React.useState(0)
     const [logoOpacity, setLogoOpacity] = React.useState(1)
     const { theme, setTheme } = useTheme()
-    const logoRef = React.useRef<HTMLDivElement>(null)
+    const logoRef = React.useRef<HTMLAnchorElement>(null)
     
     const leftMenuItems = [
         { label: 'About', href: '/about' },
@@ -65,8 +65,8 @@ export const HeroHeader = () => {
         <header>
             <nav
                 data-state={menuState && 'active'}
-                className="fixed z-50 w-full bg-white dark:bg-transparent backdrop-blur-md border-b border-zinc-200 dark:border-white/5">
-                <div className="mx-auto w-full px-6 transition-all duration-300">
+                className="fixed z-50 w-full bg-transparent backdrop-blur-md border-b border-zinc-200 dark:border-white/5">
+                <div className="mx-auto max-w-5xl w-full px-6 transition-all duration-300">
                     {/* Mobile Layout */}
                     <div className="lg:hidden">
                         <div className="relative flex flex-wrap items-center justify-between gap-6 py-3">
