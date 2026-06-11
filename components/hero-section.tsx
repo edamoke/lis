@@ -194,7 +194,7 @@ export default function HeroSection() {
                     </div>
                 </div>
             </section>
-            <section className="bg-background pb-16 md:pb-32 pt-8 md:pt-16">
+            <section className="bg-blue-950 dark:bg-blue-950 text-white dark:text-white pb-16 md:pb-32 pt-8 md:pt-16">
                 <AnimatedGroup
                     variants={{
                         container: {
@@ -211,8 +211,8 @@ export default function HeroSection() {
                 >
 
                     <div className="flex flex-col items-center md:flex-row">
-                        <div className="md:max-w-44 md:border-r md:pr-6">
-                            <p className="text-end text-sm font-mono uppercase">Our Campuses</p>
+                        <div className="md:max-w-44 md:border-r md:pr-6 border-white/20">
+                            <p className="text-end text-sm font-mono uppercase text-white/70">Our Campuses</p>
                         </div>
                         <div className="relative py-6 md:w-[calc(100%-11rem)]">
                             <InfiniteSlider
@@ -220,30 +220,30 @@ export default function HeroSection() {
                                 speed={40}
                                 gap={112}>
                                 <Link href="/schools/nairobi-karen" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-blue-600 transition-colors">Nairobi Karen</p>
-                                    <p className="text-xs text-muted-foreground">KG – A Levels</p>
+                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Karen</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
                                 </Link>
                                 <Link href="/schools/nairobi-lavington" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-blue-600 transition-colors">Nairobi Lavington</p>
-                                    <p className="text-xs text-muted-foreground">Year 4 – 10</p>
+                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Lavington</p>
+                                    <p className="text-xs text-white/60">Year 4 – 10</p>
                                 </Link>
                                 <Link href="/schools/nairobi-kindergarten" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-blue-600 transition-colors">Nairobi Kindergarten</p>
-                                    <p className="text-xs text-muted-foreground">Reception – Year 3</p>
+                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Kindergarten</p>
+                                    <p className="text-xs text-white/60">Reception – Year 3</p>
                                 </Link>
                                 <Link href="/schools/mombasa" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-blue-600 transition-colors">Mombasa</p>
-                                    <p className="text-xs text-muted-foreground">KG – A Levels</p>
+                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Mombasa</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
                                 </Link>
                                 <Link href="/schools/malindi" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-blue-600 transition-colors">Malindi</p>
-                                    <p className="text-xs text-muted-foreground">KG – A Levels</p>
+                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Malindi</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
                                 </Link>
                             </InfiniteSlider>
                             <div
-                                className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
+                                className="bg-linear-to-r from-blue-950 absolute inset-y-0 left-0 w-20"></div>
                             <div
-                                className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
+                                className="bg-linear-to-l from-blue-950 absolute inset-y-0 right-0 w-20"></div>
                             <ProgressiveBlur
                                 className="pointer-events-none absolute left-0 top-0 h-full w-20"
                                 direction="left"
