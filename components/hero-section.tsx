@@ -194,7 +194,7 @@ export default function HeroSection() {
                     </div>
                 </div>
             </section>
-            <section className="bg-blue-950 dark:bg-blue-950 text-white dark:text-white pb-16 md:pb-32 pt-8 md:pt-16">
+            <section className="bg-blue-950 dark:bg-blue-950 text-white dark:text-white pb-16 md:pb-32 pt-8 md:pt-16 overflow-hidden">
                 <AnimatedGroup
                     variants={{
                         container: {
@@ -214,7 +214,7 @@ export default function HeroSection() {
                         <div className="md:max-w-44 md:border-r md:pr-6 border-white/20">
                             <p className="text-end text-sm font-mono uppercase text-white/70">Our Campuses</p>
                         </div>
-                        <div className="relative py-6 md:w-[calc(100%-11rem)]">
+                        <div className="relative py-6 md:w-[calc(100%-11rem)] overflow-hidden">
                             <InfiniteSlider
                                 speedOnHover={20}
                                 speed={40}

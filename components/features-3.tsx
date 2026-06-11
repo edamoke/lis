@@ -34,21 +34,21 @@ export default function Features() {
                     }}
                 >
                     <Card
-                        className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16">
+                        className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16 bg-gradient-to-br from-red-900 to-red-950 border border-red-800/50 text-white divide-red-800/50 shadow-lg">
                         <div className="group shadow-zinc-950/5">
                             <CardHeader className="pb-3">
                                 <CardDecorator>
                                     <BookOpen
-                                        className="size-6"
+                                        className="size-6 text-white"
                                         aria-hidden
                                     />
                                 </CardDecorator>
 
-                                <h3 className="mt-6 font-medium text-xl">Cambridge Curriculum</h3>
+                                <h3 className="mt-6 font-medium text-xl text-white">Cambridge Curriculum</h3>
                             </CardHeader>
 
                             <CardContent>
-                                <p className="text-sm text-muted-foreground">International Cambridge curriculum with IGCSE and A Levels for comprehensive education.</p>
+                                <p className="text-sm text-red-100/80">International Cambridge curriculum with IGCSE and A Levels for comprehensive education.</p>
                             </CardContent>
                         </div>
 
@@ -56,16 +56,16 @@ export default function Features() {
                             <CardHeader className="pb-3">
                                 <CardDecorator>
                                     <Lightbulb
-                                        className="size-6"
+                                        className="size-6 text-white"
                                         aria-hidden
                                     />
                                 </CardDecorator>
 
-                                <h3 className="mt-6 font-medium text-xl">Modern Facilities</h3>
+                                <h3 className="mt-6 font-medium text-xl text-white">Modern Facilities</h3>
                             </CardHeader>
 
                             <CardContent>
-                                <p className="mt-3 text-sm text-muted-foreground">State-of-the-art learning facilities with technology-enhanced education systems.</p>
+                                <p className="mt-3 text-sm text-red-100/80">State-of-the-art learning facilities with technology-enhanced education systems.</p>
                             </CardContent>
                         </div>
 
@@ -73,16 +73,16 @@ export default function Features() {
                             <CardHeader className="pb-3">
                                 <CardDecorator>
                                     <Users
-                                        className="size-6"
+                                        className="size-6 text-white"
                                         aria-hidden
                                     />
                                 </CardDecorator>
 
-                                <h3 className="mt-6 font-medium text-xl">Internship Programs</h3>
+                                <h3 className="mt-6 font-medium text-xl text-white">Internship Programs</h3>
                             </CardHeader>
 
                             <CardContent>
-                                <p className="mt-3 text-sm text-muted-foreground">A-Level students experience real corporate world through partnerships with leading companies.</p>
+                                <p className="mt-3 text-sm text-red-100/80">A-Level students experience real corporate world through partnerships with leading companies.</p>
                             </CardContent>
                         </div>
                     </Card>
@@ -94,13 +94,13 @@ export default function Features() {
 
 const CardDecorator = ({children}: { children: ReactNode }) => (
     <div
-        className="mask-radial-from-40% mask-radial-to-60% relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
+        className="mask-radial-from-40% mask-radial-to-60% relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-white)25%,transparent)]">
         <div
             aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
+            className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] opacity-40"
         />
 
         <div
-            className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t">{children}</div>
+            className="bg-red-950/60 border-red-800/50 absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t text-white">{children}</div>
     </div>
 )
