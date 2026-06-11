@@ -26,7 +26,7 @@ export const DEFAULT_SECTIONS: CmsSection[] = [
     enabled: true,
     order: 0,
     content: {
-      badge: '20th June 2024',
+      badge: '20th June 2026',
       title: 'Light International',
       titleAccent: 'School',
       subtitle: 'A premier Cambridge International institution in Kenya with five campuses across Nairobi, Mombasa, and Malindi.',

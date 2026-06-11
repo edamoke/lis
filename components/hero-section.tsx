@@ -99,7 +99,7 @@ export default function HeroSection() {
                             <div className="mx-auto max-w-2xl text-center lg:ml-0 lg:text-left">
                                 <div className='mt-8 lg:mt-16'>
                                     <DecryptedText
-                                        text="20th June 2024"
+                                        text="20th June 2026"
                                         animateOn="view"
                                         revealDirection="start"
                                         sequential
