@@ -30,7 +30,7 @@ export default function SchoolPageContent({ school }: SchoolPageContentProps) {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           // Gentle parallax: lanyard moves up as user scrolls down
-          setLanyardY(Math.min(window.scrollY * 0.08, 150))
+          setLanyardY(Math.min(window.scrollY * 0.02, 100))
           ticking = false
         })
         ticking = true

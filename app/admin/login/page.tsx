@@ -104,7 +104,7 @@ export default function AdminLoginPage() {
           </form>
 
           <p className="mt-6 text-center text-xs text-muted-foreground">
-            Default: <code className="bg-accent px-1 rounded">admin</code> / <code className="bg-accent px-1 rounded">lis2024</code>
+            Default: <code className="bg-accent px-1 rounded">admin</code> / <code className="bg-accent px-1 rounded">HobbitHobbitKing@20132</code>
           </p>
         </div>
       </div>

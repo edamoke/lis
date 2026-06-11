@@ -41,21 +41,21 @@ export default function GlobalCommunity() {
             },
         });
 
-        // Parallax effect for left content - moves up with increased distance (5x faster)
+        // Parallax effect for left content - moves up with increased distance (reduced by 40%)
         tl.to(leftContent, {
-            y: -250,
-            duration: 1,
-        }, 0);
-
-        // Parallax effect for right content - moves down with increased distance (5x faster)
-        tl.to(rightContent, {
-            y: 250,
-            duration: 1,
-        }, 0);
-
-        // Enhanced parallax for the decorative background
-        tl.to(parallaxContainer, {
             y: -150,
+            duration: 1,
+        }, 0);
+
+        // Parallax effect for right content - moves down with increased distance (reduced by 40%)
+        tl.to(rightContent, {
+            y: 150,
+            duration: 1,
+        }, 0);
+
+        // Enhanced parallax for the decorative background (reduced by 40%)
+        tl.to(parallaxContainer, {
+            y: -90,
             duration: 1,
         }, 0);
 
@@ -171,6 +171,34 @@ export default function GlobalCommunity() {
 
                         {/* Images Gallery */}
                         <div className="mt-8 grid grid-cols-2 gap-4">
+                            {/* Art Class Image */}
+                            <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48 md:h-56">
+                                <Image
+                                    src="/art-class.jpeg"
+                                    alt="Student painting in art class"
+                                    fill
+                                    className="object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                            {/* Science Class Image */}
+                            <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48 md:h-56">
+                                <Image
+                                    src="/science-class.jpeg"
+                                    alt="Student conducting chemistry experiment in science lab"
+                                    fill
+                                    className="object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Content Block */}
+                    <div
+                        ref={rightContentRef}
+                        className="group"
+                    >
+                        {/* Images Gallery (the 2 lady images in the spot marked X) */}
+                        <div className="grid grid-cols-2 gap-4 mb-8">
                             {/* KG Lab Image */}
                             <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48 md:h-56">
                                 <Image
@@ -190,13 +218,7 @@ export default function GlobalCommunity() {
                                 />
                             </div>
                         </div>
-                    </div>
 
-                    {/* Right Content Block */}
-                    <div
-                        ref={rightContentRef}
-                        className="group"
-                    >
                         <div className="bg-gradient-to-br from-blue-900 to-blue-950 rounded-lg p-8 md:p-10 text-white space-y-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-blue-800/50">
                             <div className="space-y-4">
                                 <h3 className="text-xl md:text-2xl font-bold leading-tight">
@@ -207,39 +229,6 @@ export default function GlobalCommunity() {
                                     <footer className="font-semibold not-italic text-amber-300">— Jane Goodall</footer>
                                 </blockquote>
                             </div>
-                        </div>
-
-                        {/* Decorative Animal Illustrations */}
-                        <div className="mt-8 flex justify-center items-center gap-8 md:gap-12 group-hover:scale-105 transition-transform duration-300">
-                            <svg
-                                viewBox="0 0 100 120"
-                                className="w-32 h-32 md:w-40 md:h-40 stroke-blue-900 fill-none"
-                                strokeWidth="1.5"
-                            >
-                                {/* Leopard */}
-                                <ellipse cx="50" cy="50" rx="25" ry="28" />
-                                <circle cx="35" cy="35" r="8" />
-                                <circle cx="50" cy="30" r="6" />
-                                <path d="M50,78 L45,100 M50,78 L50,100 M50,78 L55,100" />
-                                <circle cx="50" cy="85" r="2" opacity="0.5" />
-                                <circle cx="40" cy="70" r="1.5" opacity="0.5" />
-                                <circle cx="60" cy="70" r="1.5" opacity="0.5" />
-                            </svg>
-                            <svg
-                                viewBox="0 0 100 180"
-                                className="w-32 h-32 md:w-40 md:h-40 stroke-blue-900 fill-none"
-                                strokeWidth="1.5"
-                            >
-                                {/* Giraffe */}
-                                <path d="M50,180 L50,120 L50,80" />
-                                <circle cx="50" cy="65" r="12" />
-                                <path d="M45,60 L42,45 M55,60 L58,45" />
-                                <circle cx="42" cy="40" r="2" />
-                                <circle cx="58" cy="40" r="2" />
-                                <path d="M50,120 L35,145 M50,120 L65,145 M35,145 L35,165 M65,145 L65,165" />
-                                <path d="M50,100 Q40,105 35,100" />
-                                <path d="M50,100 Q60,105 65,100" />
-                            </svg>
                         </div>
                     </div>
                 </div>

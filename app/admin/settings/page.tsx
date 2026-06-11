@@ -38,7 +38,7 @@ export default function AdminSettingsPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-muted-foreground w-24">Password</span>
-                  <code className="bg-accent rounded px-2 py-0.5">lis2024</code>
+                  <code className="bg-accent rounded px-2 py-0.5">HobbitHobbitKing@20132</code>
                 </div>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">

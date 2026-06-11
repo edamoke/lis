@@ -23,6 +23,7 @@ export default function HeroSection() {
     const [lanyardY, setLanyardY] = React.useState(0)
     const [lanyardZIndex, setLanyardZIndex] = React.useState(30)
     const [lanyardPosition, setLanyardPosition] = React.useState<'right' | 'left'>('right')
+    const [lanyardOpacity, setLanyardOpacity] = React.useState(1)
     const agendaRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
@@ -36,13 +37,19 @@ export default function HeroSection() {
                     // Gentle parallax: moves up slowly as user scrolls, max shift 80px
                     setLanyardY(Math.min(scrollTop * 0.08, 80))
 
-                    // Lanyard appears ONLY in:
-                    // 1. Hero section: scrollTop < ~1200px (right side, visible)
-                    // 2. Why Choose/Features section: ~1200px to ~3500px (right side, visible)
-                    // Hidden in Global Community, Call-to-Action, Our School Programs, Footer
-                    const featuresSectionEnd = 3500
+                    // Smoothly fade out the lanyard as we scroll through the second section.
+                    // Fade starts around 80% of window height (near the end of hero content)
+                    // and fully fades out to 0 opacity by 180% of window height (at the end of features section)
+                    const fadeStart = heroHeight * 0.8
+                    const fadeEnd = heroHeight * 1.8
                     
-                    if (scrollTop < featuresSectionEnd) {
+                    let opacity = 1
+                    if (scrollTop > fadeStart) {
+                        opacity = Math.max(0, 1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart))
+                    }
+                    setLanyardOpacity(opacity)
+                    
+                    if (opacity > 0) {
                         // In hero and features sections — visible on right
                         setLanyardZIndex(42)
                         setLanyardPosition('right')
@@ -72,7 +79,8 @@ export default function HeroSection() {
                 style={{
                     zIndex: lanyardZIndex,
                     transform: `translateY(${lanyardY}px)`,
-                    transition: 'zIndex 0s, left 0.7s ease-out, right 0.7s ease-out, transform 0.15s ease-out',
+                    transition: 'zIndex 0s, left 0.7s ease-out, right 0.7s ease-out, transform 0.15s ease-out, opacity 0.1s ease-out',
+                    opacity: lanyardOpacity,
                 }}
             >
                 <div className="w-full h-full pointer-events-auto">

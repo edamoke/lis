@@ -13,7 +13,7 @@ export interface CmsSection {
 
 const STORAGE_KEY = 'lis_cms_sections'
 const ADMIN_SESSION_KEY = 'lis_admin_session'
-const ADMIN_CREDENTIALS = { username: 'admin', password: 'lis2024' }
+const ADMIN_CREDENTIALS = { username: 'admin', password: 'HobbitHobbitKing@20132' }
 
 // ─── Default section definitions ─────────────────────────────────────────────
 export const DEFAULT_SECTIONS: CmsSection[] = [

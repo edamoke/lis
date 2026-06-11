@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import V0Icon from "@/components/icons/v0-icon";
 import React from "react";
 
 const links = [
@@ -8,16 +7,16 @@ const links = [
         href: 'https://vercel.com/',
     },
     {
-        title: 'v0',
-        href: 'https://v0.dev/',
+        title: 'Lis',
+        href: '/',
     },
     {
         title: 'Meetup SDK',
         href: 'https://meetup-sdk.vercel.com/',
     },
     {
-        title: 'v0 IRL',
-        href: 'https://v0.app/irl',
+        title: 'Lis IRL',
+        href: '/',
     },
 ]
 
@@ -29,7 +28,7 @@ export default function FooterSection() {
                     href="/"
                     aria-label="go home"
                     className="mx-auto block size-fit">
-                    <V0Icon size={30} className='text-foreground'/>
+                    <span className="text-2xl font-bold tracking-wider text-foreground">Lis</span>
                 </Link>
 
                 <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
@@ -42,11 +41,7 @@ export default function FooterSection() {
                         </Link>
                     ))}
                 </div>
-                <span className="text-muted-foreground block text-center text-sm font-mono">Built with v0, <Link
-                    href="https://tailark.com/"
-                    className="text-foreground underline">Tailark</Link> & <Link
-                    href="https://reactbits.dev/"
-                    className="text-foreground underline">React Bits</Link> • Powered by Vercel.</span>
+                <span className="text-muted-foreground block text-center text-sm font-mono">Copyright @2026 Light international academy</span>
             </div>
         </footer>
     )

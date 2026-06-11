@@ -7,7 +7,7 @@ import {AnimatedGroup} from "@/components/motion-primitives/animated-group";
 
 export default function Features() {
     return (
-        <section className="py-16 md:py-32 dark:bg-transparent bg-transparent relative z-40">
+        <section className="py-16 md:py-32 bg-[#F3F3F3] dark:bg-[#F3F3F3] text-zinc-900 dark:text-zinc-900 relative z-40">
             <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center">
                     <TextEffect

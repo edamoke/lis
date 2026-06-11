@@ -65,7 +65,7 @@ export const HeroHeader = () => {
         <header>
             <nav
                 data-state={menuState && 'active'}
-                className="fixed z-50 w-full bg-transparent backdrop-blur-[2px] border-b border-white/5 dark:border-white/5">
+                className="fixed z-50 w-full bg-white dark:bg-transparent backdrop-blur-md border-b border-zinc-200 dark:border-white/5">
                 <div className="mx-auto w-full px-6 transition-all duration-300">
                     {/* Mobile Layout */}
                     <div className="lg:hidden">
