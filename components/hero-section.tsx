@@ -95,7 +95,7 @@ export default function HeroSection() {
 
             <section className='relative min-h-screen lg:h-screen flex flex-col'>
                 {/* Background image */}
-                <div className="absolute inset-0 z-0 opacity-40">
+                <div className="absolute inset-0 z-0 opacity-90">
                     <Image
                         src="/heroes/about.png"
                         alt="Light International School"
