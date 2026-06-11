@@ -20,7 +20,7 @@ export default function Agenda() {
                         </TextEffect>
                         <div className="mx-auto lg:mx-0 max-w-[340px] w-full overflow-hidden rounded-2xl border border-border/50 bg-muted/30 shadow-lg">
                             <Image
-                                src="/school-programs.jpeg"
+                                src="/heroes/program.jpg"
                                 alt="Our School Programs"
                                 width={340}
                                 height={580}
@@ -41,7 +41,7 @@ export default function Agenda() {
                                 },
                             },
                             ...transitionVariants,
-                        }}
+                        } as any}
                         className="divide-y divide-dashed sm:mx-auto sm:max-w-lg lg:mx-0"
                     >
                         <div className="pb-6">
