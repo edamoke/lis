@@ -117,7 +117,7 @@ export const HeroHeader = () => {
                                                     asChild
                                                     variant="ghost"
                                                     size="sm"
-                                                    className="w-full justify-start"
+                                                    className="w-full justify-start text-red-600 hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
                                                     onClick={() => setMenuState(false)}>
                                                     <Link href={campus.href}>
                                                         <span>{campus.label}</span>
@@ -132,6 +132,7 @@ export const HeroHeader = () => {
                                             asChild
                                             variant="ghost"
                                             size="sm"
+                                            className="text-red-600 hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
                                             onClick={() => setMenuState(false)}>
                                             <Link href={item.href}>
                                                 <span>{item.label}</span>
@@ -141,7 +142,8 @@ export const HeroHeader = () => {
                                 )}
                                 <Button
                                     asChild
-                                    size="sm">
+                                    size="sm"
+                                    className="text-red-600 hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20">
                                     <Link href="tel:+254717998888">
                                         <span>Call Now</span>
                                     </Link>
@@ -157,7 +159,7 @@ export const HeroHeader = () => {
                             {leftMenuItems.map((item) =>
                                 item.label === 'Schools' ? (
                                     <div key="schools" className="relative group">
-                                        <button className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-foreground px-3 py-1.5 rounded-md hover:bg-foreground/5 transition-colors duration-150">
+                                        <button className="flex items-center gap-1 text-sm font-medium text-red-600 hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
                                             Schools
                                             <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
                                         </button>
@@ -168,7 +170,7 @@ export const HeroHeader = () => {
                                                     <Link
                                                         key={campus.href}
                                                         href={campus.href}
-                                                        className="flex flex-col px-3 py-2 rounded-lg hover:bg-foreground/5 transition-colors">
+                                                        className="flex flex-col px-3 py-2 rounded-lg text-red-600 hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors">
                                                         <span className="text-sm font-medium">{campus.label}</span>
                                                         <span className="text-xs text-muted-foreground">{campus.grades}</span>
                                                     </Link>
@@ -180,7 +182,7 @@ export const HeroHeader = () => {
                                     <Link
                                         key={item.label}
                                         href={item.href}
-                                        className="text-sm font-medium text-foreground/80 hover:text-foreground px-3 py-1.5 rounded-md hover:bg-foreground/5 transition-colors duration-150">
+                                        className="text-sm font-medium text-red-600 hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
                                         {item.label}
                                     </Link>
                                 )
@@ -211,13 +213,13 @@ export const HeroHeader = () => {
                                 <Link
                                     key={item.label}
                                     href={item.href}
-                                    className="text-sm font-medium text-foreground/80 hover:text-foreground px-3 py-1.5 rounded-md hover:bg-foreground/5 transition-colors duration-150">
+                                    className="text-sm font-medium text-red-600 hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
                                     {item.label}
                                 </Link>
                             ))}
                             <Link
                                 href="tel:+254717998888"
-                                className="text-sm font-medium text-foreground/80 hover:text-foreground px-3 py-1.5 rounded-md hover:bg-foreground/5 transition-colors duration-150">
+                                className="text-sm font-medium text-red-600 hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
                                 Call Now
                             </Link>
                             <button

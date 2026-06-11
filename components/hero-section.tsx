@@ -24,7 +24,7 @@ export default function HeroSection() {
     const [lanyardY, setLanyardY] = React.useState(0)
     const [lanyardZIndex, setLanyardZIndex] = React.useState(30)
     const [lanyardPosition, setLanyardPosition] = React.useState<'right' | 'left'>('right')
-    const [lanyardOpacity, setLanyardOpacity] = React.useState(0.4)
+    const [lanyardOpacity, setLanyardOpacity] = React.useState(1.0)
     const agendaRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
@@ -44,9 +44,9 @@ export default function HeroSection() {
                     const fadeStart = heroHeight * 0.8
                     const fadeEnd = heroHeight * 1.8
                     
-                    let opacity = 0.4
+                    let opacity = 1.0
                     if (scrollTop > fadeStart) {
-                        opacity = Math.max(0, 0.4 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart)) * 0.4)
+                        opacity = Math.max(0, 1.0 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart)))
                     }
                     setLanyardOpacity(opacity)
                     
@@ -95,7 +95,7 @@ export default function HeroSection() {
 
             <section className='relative min-h-screen lg:h-screen flex flex-col'>
                 {/* Background image */}
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 opacity-40">
                     <Image
                         src="/heroes/about.png"
                         alt="Light International School"
@@ -182,7 +182,7 @@ export default function HeroSection() {
                             </div>
                         </div>
                         {/* Mobile lanyard — only in hero section on small screens, 120% increase = h-[464px] * 2.20 = h-[1021px] */}
-                        <div className='block lg:hidden w-full h-[1021px] mt-8 opacity-40' aria-hidden="false">
+                        <div className='block lg:hidden w-full h-[1021px] mt-8' aria-hidden="false">
                             <LanyardWithControls
                                 position={[0, 0, 25]}
                                 containerClassName='w-full h-full select-none'
