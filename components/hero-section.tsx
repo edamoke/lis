@@ -10,6 +10,7 @@ import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
 import DecryptedText from "@/components/DecryptedText";
 import { transitionVariants } from "@/lib/utils";
 import LanyardWithControls from "@/components/lanyard-with-controls";
+import Image from 'next/image'
 
 const schoolImages = [
     "Nairobi Karen",
@@ -23,7 +24,7 @@ export default function HeroSection() {
     const [lanyardY, setLanyardY] = React.useState(0)
     const [lanyardZIndex, setLanyardZIndex] = React.useState(30)
     const [lanyardPosition, setLanyardPosition] = React.useState<'right' | 'left'>('right')
-    const [lanyardOpacity, setLanyardOpacity] = React.useState(1)
+    const [lanyardOpacity, setLanyardOpacity] = React.useState(0.4)
     const agendaRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
@@ -43,9 +44,9 @@ export default function HeroSection() {
                     const fadeStart = heroHeight * 0.8
                     const fadeEnd = heroHeight * 1.8
                     
-                    let opacity = 1
+                    let opacity = 0.4
                     if (scrollTop > fadeStart) {
-                        opacity = Math.max(0, 1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart))
+                        opacity = Math.max(0, 0.4 - ((scrollTop - fadeStart) / (fadeEnd - fadeStart)) * 0.4)
                     }
                     setLanyardOpacity(opacity)
                     
@@ -92,8 +93,22 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            <section className='min-h-screen lg:h-screen flex flex-col'>
-                <div className="flex-1 flex items-end">
+            <section className='relative min-h-screen lg:h-screen flex flex-col'>
+                {/* Background image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/heroes/about.png"
+                        alt="Light International School"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div
+                        className="absolute inset-0 bg-black/45"
+                    />
+                </div>
+
+                <div className="relative z-10 flex-1 flex items-end">
                     <div className="w-full pb-24 pt-52 md:pb-32 md:pt-64 lg:pb-56 lg:pt-52 lg:grid lg:grid-cols-2 lg:grid-rows-1">
                         <div className="relative mx-auto flex max-w-xl flex-col px-6 lg:block">
                             <div className="mx-auto max-w-2xl text-center lg:ml-0 lg:text-left">
@@ -105,21 +120,21 @@ export default function HeroSection() {
                                         sequential
                                         useOriginalCharsOnly={false}
                                         speed={70}
-                                        className='font-mono text-muted-foreground bg-blue-600/20 rounded-md uppercase py-2 px-3'
+                                        className='font-mono text-white/70 bg-white/10 rounded-md uppercase py-2 px-3'
                                     />
                                 </div>
                                 <TextEffect
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl">
+                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl text-white">
                                     Light International
                                 </TextEffect>
                                 <TextEffect
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">
+                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
                                     School
                                 </TextEffect>
                                 <TextEffect
@@ -128,7 +143,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     delay={0.5}
                                     as="p"
-                                    className="mt-8 max-w-2xl text-pretty text-lg text-muted-foreground p-1 rounded-md">
+                                    className="mt-8 max-w-2xl text-pretty text-lg text-white/80 p-1 rounded-md">
                                     A premier Cambridge International institution in Kenya with five campuses across Nairobi, Mombasa, and Malindi. Empowering students to become confident, compassionate, and innovative learners.
                                 </TextEffect>
                                 <AnimatedGroup
@@ -167,7 +182,7 @@ export default function HeroSection() {
                             </div>
                         </div>
                         {/* Mobile lanyard — only in hero section on small screens, 120% increase = h-[464px] * 2.20 = h-[1021px] */}
-                        <div className='block lg:hidden w-full h-[1021px] mt-8' aria-hidden="false">
+                        <div className='block lg:hidden w-full h-[1021px] mt-8 opacity-40' aria-hidden="false">
                             <LanyardWithControls
                                 position={[0, 0, 25]}
                                 containerClassName='w-full h-full select-none'
