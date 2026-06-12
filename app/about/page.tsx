@@ -43,49 +43,51 @@ export default function AboutPage() {
       />
 
       {/* Mission & Values */}
-      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <AnimatedGroup
-          triggerOnView
-          variants={{ container: { visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }, ...transitionVariants }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {values.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="rounded-xl border border-border bg-card p-6 flex flex-col gap-4">
-              <div className="size-10 rounded-lg bg-blue-600/10 flex items-center justify-center">
-                <Icon className="size-5 text-blue-600" />
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-900 to-blue-950 border-t border-b border-blue-800/30 text-white relative z-40">
+        <div className="mx-auto max-w-6xl px-6">
+          <AnimatedGroup
+            triggerOnView
+            variants={{ container: { visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }, ...transitionVariants }}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {values.map(({ icon: Icon, title, body }) => (
+              <div key={title} className="rounded-xl border border-blue-800/50 bg-blue-950/60 p-6 flex flex-col gap-4 text-white">
+                <div className="size-10 rounded-lg bg-blue-400/10 flex items-center justify-center">
+                  <Icon className="size-5 text-blue-400" />
+                </div>
+                <h3 className="font-semibold text-base text-white">{title}</h3>
+                <p className="text-sm text-blue-100/80 leading-relaxed">{body}</p>
               </div>
-              <h3 className="font-semibold text-base">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
-            </div>
-          ))}
-        </AnimatedGroup>
+            ))}
+          </AnimatedGroup>
+        </div>
       </section>
 
       {/* About body */}
-      <section className="bg-card/30 border-y border-border">
+      <section className="bg-gradient-to-br from-red-900 to-red-950 border-y border-red-800/30 text-white relative z-40">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 grid gap-12 lg:grid-cols-2 lg:items-center">
           <AnimatedGroup triggerOnView variants={{ container: { visible: { transition: { staggerChildren: 0.08 } } }, ...transitionVariants }}>
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">Who We Are</span>
-              <h2 className="mt-3 text-3xl font-semibold text-balance">A Premier Cambridge Institution in Kenya</h2>
-              <p className="mt-5 text-muted-foreground leading-relaxed">
-                Light International School is one of Kenya&apos;s leading Cambridge International institutions, with five campuses spread across Nairobi, Mombasa, and Malindi. Since our founding, we have been dedicated to delivering an education that goes beyond the classroom — building character, confidence, and a lifelong love of learning.
+              <span className="text-xs font-semibold uppercase tracking-widest text-red-400">Who We Are</span>
+              <h2 className="mt-3 text-3xl font-semibold text-balance text-white">A Premier Cambridge Institution in Kenya</h2>
+              <p className="mt-5 text-red-100/80 leading-relaxed">
+                Light International School is one of Kenya's leading Cambridge International institutions, with five campuses spread across Nairobi, Mombasa, and Malindi. Since our founding, we have been dedicated to delivering an education that goes beyond the classroom — building character, confidence, and a lifelong love of learning.
               </p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Our Cambridge International curriculum, delivered by a team of experienced and passionate educators, prepares students for success at the world&apos;s top universities and in every career they choose. We are proud of the diverse, inclusive community we have built — one that mirrors the globalised world our graduates will lead.
+              <p className="mt-4 text-red-100/80 leading-relaxed">
+                Our Cambridge International curriculum, delivered by a team of experienced and passionate educators, prepares students for success at the world's top universities and in every career they choose. We are proud of the diverse, inclusive community we have built — one that mirrors the globalised world our graduates will lead.
               </p>
             </div>
           </AnimatedGroup>
           {/* Timeline */}
           <AnimatedGroup triggerOnView variants={{ container: { visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } } }, ...transitionVariants }}>
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold">Our Journey</h3>
-              <ol className="relative border-l border-blue-600/30 space-y-6 pl-6">
+              <h3 className="text-xl font-semibold text-white">Our Journey</h3>
+              <ol className="relative border-l border-red-400/30 space-y-6 pl-6">
                 {milestones.map(({ year, event }) => (
                   <li key={year} className="relative">
-                    <span className="absolute -left-[25px] top-1 size-3 rounded-full bg-blue-600 ring-2 ring-background" />
-                    <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">{year}</span>
-                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{event}</p>
+                    <span className="absolute -left-[25px] top-1 size-3 rounded-full bg-red-400 ring-2 ring-red-950" />
+                    <span className="text-xs font-bold text-red-400 uppercase tracking-widest">{year}</span>
+                    <p className="mt-1 text-sm text-red-100/80 leading-relaxed">{event}</p>
                   </li>
                 ))}
               </ol>

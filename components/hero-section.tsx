@@ -25,7 +25,29 @@ export default function HeroSection({ isDuplicate = false }: { isDuplicate?: boo
     const [lanyardZIndex, setLanyardZIndex] = React.useState(30)
     const [lanyardPosition, setLanyardPosition] = React.useState<'right' | 'left'>('right')
     const [lanyardOpacity, setLanyardOpacity] = React.useState(1.0)
+    const [currentDateText, setCurrentDateText] = React.useState("13th June 2026")
     const agendaRef = React.useRef<HTMLDivElement>(null)
+
+    React.useEffect(() => {
+        const getOrdinalSuffix = (d: number) => {
+            if (d > 3 && d < 21) return 'th';
+            switch (d % 10) {
+                case 1:  return "st";
+                case 2:  return "nd";
+                case 3:  return "rd";
+                default: return "th";
+            }
+        };
+        const now = new Date();
+        const d = now.getDate();
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const monthName = months[now.getMonth()];
+        const year = now.getFullYear();
+        setCurrentDateText(`${d}${getOrdinalSuffix(d)} ${monthName} ${year}`);
+    }, []);
 
     React.useEffect(() => {
         if (isDuplicate) return;
@@ -184,12 +206,12 @@ export default function HeroSection({ isDuplicate = false }: { isDuplicate?: boo
                 </div>
 
                 <div className="relative z-10 flex-1 flex items-end">
-                    <div className="w-full pb-24 pt-52 md:pb-32 md:pt-64 lg:pb-56 lg:pt-52 lg:grid lg:grid-cols-2 lg:grid-rows-1">
+                    <div className="w-full pb-36 pt-40 md:pb-44 md:pt-52 lg:pb-72 lg:pt-36 lg:grid lg:grid-cols-2 lg:grid-rows-1">
                         <div className="relative mx-auto flex max-w-xl flex-col px-6 lg:block">
                             <div className="mx-auto max-w-2xl text-center lg:ml-0 lg:text-left">
                                 <div className='mt-8 lg:mt-16'>
                                     <DecryptedText
-                                        text="20th June 2026"
+                                        text={currentDateText}
                                         animateOn="view"
                                         revealDirection="start"
                                         sequential
@@ -202,14 +224,14 @@ export default function HeroSection({ isDuplicate = false }: { isDuplicate?: boo
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl text-white">
+                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl text-red-500">
                                     Light International
                                 </TextEffect>
                                 <TextEffect
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+                                    className="max-w-2xl text-balance text-5xl font-semibold md:text-6xl xl:text-7xl text-red-500">
                                     School
                                 </TextEffect>
                                 <TextEffect

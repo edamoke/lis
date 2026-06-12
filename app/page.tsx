@@ -11,7 +11,6 @@ export default function Home() {
             <Features/>
             <GlobalCommunity/>
             <Agenda/>
-            <HeroSection isDuplicate />
             <CallToAction/>
         </>
     )

@@ -75,8 +75,13 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: var(--font-geist-sans), 'Geist', 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono', 'Geist Mono Fallback';
+  --text-xs: 0.69rem;
+  --text-sm: 0.805rem;
+  --text-base: 0.92rem;
+  --text-lg: 1.035rem;
+  --text-xl: 1.15rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -116,6 +121,9 @@
 }
 
 @layer base {
+  html {
+    font-size: 110%;
+  }
   * {
     @apply border-border outline-ring/50;
   }
