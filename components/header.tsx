@@ -35,10 +35,10 @@ export const HeroHeader = () => {
         { label: 'About', href: '/about' },
         { label: 'Academics', href: '/academics' },
         { label: 'Schools', href: '/schools' },
-        { label: 'Community', href: '#' },
     ]
     
     const rightMenuItems = [
+        { label: 'Community', href: '#' },
         { label: 'Admissions', href: '/admissions' },
         { label: 'Careers', href: '/careers' },
         { label: 'Contact', href: '/contact' }
@@ -173,14 +173,6 @@ export const HeroHeader = () => {
                                         )
                                     }
                                 })}
-                                <Button
-                                    asChild
-                                    size="sm"
-                                    className="text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20">
-                                    <Link href="tel:+254717998888">
-                                        <span>Call Now</span>
-                                    </Link>
-                                </Button>
                             </div>
                         </div>
                     </div>
@@ -207,29 +199,6 @@ export const HeroHeader = () => {
                                                             className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors">
                                                             <span className="text-sm font-medium">{campus.label}</span>
                                                             <span className="text-xs text-muted-foreground">{campus.grades}</span>
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                } else if (item.label === 'Community') {
-                                    return (
-                                        <div key="community" className="relative group">
-                                            <button className="flex items-center gap-1 text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
-                                                Community
-                                                <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
-                                            </button>
-                                            {/* Dropdown */}
-                                            <div className="absolute top-full left-0 mt-1 w-64 rounded-xl border border-white/10 bg-background/80 backdrop-blur-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-                                                <div className="p-1.5">
-                                                    {communityItems.map((cItem) => (
-                                                        <Link
-                                                            key={cItem.href}
-                                                            href={cItem.href}
-                                                            className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors text-left">
-                                                            <span className="text-sm font-medium">{cItem.label}</span>
-                                                            <span className="text-[10px] text-muted-foreground leading-tight">{cItem.desc}</span>
                                                         </Link>
                                                     ))}
                                                 </div>
@@ -269,19 +238,41 @@ export const HeroHeader = () => {
 
                         {/* Right Menu Items + Theme Toggle */}
                         <div className="flex items-center gap-1">
-                            {rightMenuItems.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    className="text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
-                                    {item.label}
-                                </Link>
-                            ))}
-                            <Link
-                                href="tel:+254717998888"
-                                className="text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
-                                Call Now
-                            </Link>
+                            {rightMenuItems.map((item) => {
+                                if (item.label === 'Community') {
+                                    return (
+                                        <div key="community" className="relative group">
+                                            <button className="flex items-center gap-1 text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
+                                                Community
+                                                <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                                            </button>
+                                            {/* Dropdown */}
+                                            <div className="absolute top-full right-0 mt-1 w-64 rounded-xl border border-white/10 bg-background/80 backdrop-blur-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                                <div className="p-1.5">
+                                                    {communityItems.map((cItem) => (
+                                                        <Link
+                                                            key={cItem.href}
+                                                            href={cItem.href}
+                                                            className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors text-left">
+                                                            <span className="text-sm font-medium">{cItem.label}</span>
+                                                            <span className="text-[10px] text-muted-foreground leading-tight">{cItem.desc}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                } else {
+                                    return (
+                                        <Link
+                                            key={item.label}
+                                            href={item.href}
+                                            className="text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
+                                            {item.label}
+                                        </Link>
+                                    )
+                                }
+                            })}
                             <button
                                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                                 className="p-2 -m-1 rounded-md hover:bg-accent ml-2"
