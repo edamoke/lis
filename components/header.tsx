@@ -23,6 +23,7 @@ export const HeroHeader = () => {
     const logoRef = React.useRef<HTMLAnchorElement>(null)
     
     const leftMenuItems = [
+        { label: 'Home', href: '/' },
         { label: 'About', href: '/about' },
         { label: 'Academics', href: '/academics' },
         { label: 'Schools', href: '/schools' },
