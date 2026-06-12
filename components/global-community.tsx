@@ -67,7 +67,7 @@ export default function GlobalCommunity() {
     return (
         <section
             ref={sectionRef}
-            className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-background via-background to-background"
+            className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-white"
         >
             {/* Decorative Background Elements with Parallax */}
             <div
@@ -77,7 +77,7 @@ export default function GlobalCommunity() {
                 {/* Organic wavy shape at top */}
                 <svg
                     viewBox="0 0 1440 120"
-                    className="absolute top-0 left-0 w-full h-auto fill-foreground/5"
+                    className="absolute top-0 left-0 w-full h-auto fill-slate-50 dark:fill-slate-50"
                     preserveAspectRatio="none"
                 >
                     <path d="M0,40 Q360,0 720,40 T1440,40 L1440,0 L0,0 Z" />
@@ -87,31 +87,15 @@ export default function GlobalCommunity() {
                 <svg
                     ref={animalSvgRef}
                     viewBox="0 0 1200 500"
-                    className="absolute -top-20 left-0 w-full h-auto opacity-40"
+                    className="absolute -top-20 left-0 w-full h-auto opacity-40 text-slate-900/10 dark:text-slate-900/10"
                     preserveAspectRatio="none"
                 >
-                    {/* Giraffe outline - top left */}
-                    <g stroke="currentColor" strokeWidth="1.5" fill="none">
-                        <path d="M50,400 L60,320 L65,250" />
-                        <circle cx="68" cy="235" r="12" />
-                        <path d="M50,400 L45,370 L40,400" />
-                        <path d="M50,400 L55,370 L60,400" />
-                        <circle cx="62" cy="280" r="1" opacity="0.3" />
-                        <circle cx="55" cy="290" r="1" opacity="0.3" />
-                    </g>
                     {/* Tree outline - top center */}
                     <g stroke="currentColor" strokeWidth="1.5" fill="none">
                         <path d="M350,420 L350,300" />
                         <path d="M330,330 L370,330" />
                         <path d="M320,360 L380,360" />
                         <path d="M310,390 L390,390" />
-                    </g>
-                    {/* Additional giraffe outline - top right */}
-                    <g stroke="currentColor" strokeWidth="1.5" fill="none">
-                        <path d="M1100,400 L1090,320 L1085,250" />
-                        <circle cx="1082" cy="235" r="12" />
-                        <path d="M1100,400 L1105,370 L1110,400" />
-                        <path d="M1100,400 L1095,370 L1090,400" />
                     </g>
                 </svg>
             </div>
@@ -130,10 +114,10 @@ export default function GlobalCommunity() {
                             },
                         },
                         ...transitionVariants,
-                    }}
+                    } as any}
                     className="text-center mb-12 md:mb-16"
                 >
-                    <p className="text-sm font-mono uppercase text-muted-foreground tracking-widest mb-4">
+                    <p className="text-sm font-mono uppercase text-slate-500 dark:text-slate-500 tracking-widest mb-4">
                         A LEADING INTERNATIONAL SCHOOL IN KENYA
                     </p>
                     <h2 className="text-balance text-4xl md:text-5xl font-bold mb-8">
@@ -141,7 +125,7 @@ export default function GlobalCommunity() {
                             Our Global School
                         </span>
                         <br />
-                        <span className="text-foreground">Community</span>
+                        <span className="text-slate-900 dark:text-slate-900">Community</span>
                     </h2>
                 </AnimatedGroup>
 
