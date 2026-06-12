@@ -20,7 +20,7 @@ const schoolImages = [
     "Malindi"
 ];
 
-export default function HeroSection() {
+export default function HeroSection({ isDuplicate = false }: { isDuplicate?: boolean }) {
     const [lanyardY, setLanyardY] = React.useState(0)
     const [lanyardZIndex, setLanyardZIndex] = React.useState(30)
     const [lanyardPosition, setLanyardPosition] = React.useState<'right' | 'left'>('right')
@@ -28,6 +28,7 @@ export default function HeroSection() {
     const agendaRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
+        if (isDuplicate) return;
         let ticking = false
         const handleScroll = () => {
             if (!ticking) {
@@ -68,36 +69,110 @@ export default function HeroSection() {
 
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+    }, [isDuplicate])
+
+    const renderCarousel = (isRed: boolean) => {
+        const bgClass = isRed ? "bg-red-950 dark:bg-red-950" : "bg-blue-950 dark:bg-blue-950";
+        const fromBgClass = isRed ? "from-red-950" : "from-blue-950";
+        const hoverTextClass = isRed ? "group-hover:text-red-300" : "group-hover:text-sky-300";
+        return (
+            <section className={`${bgClass} text-white dark:text-white pb-16 md:pb-32 pt-8 md:pt-16 overflow-hidden`}>
+                <AnimatedGroup
+                    variants={{
+                        container: {
+                            visible: {
+                                transition: {
+                                    staggerChildren: 0.05,
+                                    delayChildren: 0.75,
+                                },
+                            },
+                        },
+                        ...transitionVariants,
+                    } as any}
+                    className="group relative m-auto max-w-6xl px-6"
+                >
+
+                    <div className="flex flex-col items-center md:flex-row">
+                        <div className="md:max-w-44 md:border-r md:pr-6 border-white/20">
+                            <p className="text-end text-sm font-mono uppercase text-white/70">Our Campuses</p>
+                        </div>
+                        <div className="relative py-6 md:w-[calc(100%-11rem)] overflow-hidden">
+                            <InfiniteSlider
+                                speedOnHover={20}
+                                speed={40}
+                                gap={112}>
+                                <Link href="/schools/nairobi-karen" className="flex flex-col items-center group">
+                                    <p className={`text-sm font-semibold ${hoverTextClass} transition-colors`}>Nairobi Karen</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
+                                </Link>
+                                <Link href="/schools/nairobi-lavington" className="flex flex-col items-center group">
+                                    <p className={`text-sm font-semibold ${hoverTextClass} transition-colors`}>Nairobi Lavington</p>
+                                    <p className="text-xs text-white/60">Year 4 – 10</p>
+                                </Link>
+                                <Link href="/schools/nairobi-kindergarten" className="flex flex-col items-center group">
+                                    <p className={`text-sm font-semibold ${hoverTextClass} transition-colors`}>Nairobi Kindergarten</p>
+                                    <p className="text-xs text-white/60">Reception – Year 3</p>
+                                </Link>
+                                <Link href="/schools/mombasa" className="flex flex-col items-center group">
+                                    <p className={`text-sm font-semibold ${hoverTextClass} transition-colors`}>Mombasa</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
+                                </Link>
+                                <Link href="/schools/malindi" className="flex flex-col items-center group">
+                                    <p className={`text-sm font-semibold ${hoverTextClass} transition-colors`}>Malindi</p>
+                                    <p className="text-xs text-white/60">KG – A Levels</p>
+                                </Link>
+                            </InfiniteSlider>
+                            <div
+                                className={`bg-linear-to-r ${fromBgClass} absolute inset-y-0 left-0 w-20`}></div>
+                            <div
+                                className={`bg-linear-to-l ${fromBgClass} absolute inset-y-0 right-0 w-20`}></div>
+                            <ProgressiveBlur
+                                className="pointer-events-none absolute left-0 top-0 h-full w-20"
+                                direction="left"
+                                blurIntensity={1}
+                            />
+                            <ProgressiveBlur
+                                className="pointer-events-none absolute right-0 top-0 h-full w-20"
+                                direction="right"
+                                blurIntensity={1}
+                            />
+                        </div>
+                    </div>
+                </AnimatedGroup>
+            </section>
+        );
+    };
 
     return (
         <main className="overflow-x-hidden">
             {/* Fixed lanyard — dynamic position (right in hero/features, left in agenda), z-index hides behind features section */}
-            <div
-                className={`fixed top-0 h-screen w-[60%] hidden lg:block pointer-events-none transition-all duration-700 ease-out ${
-                    lanyardPosition === 'right' ? 'right-0' : 'left-0'
-                }`}
-                style={{
-                    zIndex: lanyardZIndex,
-                    transform: `translateY(${lanyardY}px)`,
-                    transition: 'zIndex 0s, left 0.7s ease-out, right 0.7s ease-out, transform 0.15s ease-out, opacity 0.1s ease-out',
-                    opacity: lanyardOpacity,
-                }}
-            >
-                <div className="w-full h-full pointer-events-auto">
-                    <LanyardWithControls
-                        position={[0, 0, 25]}
-                        containerClassName='w-full h-full select-none'
-                        defaultName="Light International"
-                    />
+            {!isDuplicate && (
+                <div
+                    className={`fixed top-0 h-screen w-[60%] hidden lg:block pointer-events-none transition-all duration-700 ease-out ${
+                        lanyardPosition === 'right' ? 'right-0' : 'left-0'
+                    }`}
+                    style={{
+                        zIndex: lanyardZIndex,
+                        transform: `translateY(${lanyardY}px)`,
+                        transition: 'zIndex 0s, left 0.7s ease-out, right 0.7s ease-out, transform 0.15s ease-out, opacity 0.1s ease-out',
+                        opacity: lanyardOpacity,
+                    }}
+                >
+                    <div className="w-full h-full pointer-events-auto">
+                        <LanyardWithControls
+                            position={[0, 0, 25]}
+                            containerClassName='w-full h-full select-none'
+                            defaultName="Light International"
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
 
             <section className='relative min-h-screen lg:h-screen flex flex-col'>
                 {/* Background image */}
                 <div className="absolute inset-0 z-0 opacity-90">
                     <Image
-                        src="/heroes/about.png"
+                        src={isDuplicate ? "/heroes/careers.png" : "/heroes/about.png"}
                         alt="Light International School"
                         fill
                         className="object-cover"
@@ -157,7 +232,7 @@ export default function HeroSection() {
                                             },
                                         },
                                         ...transitionVariants,
-                                    }}
+                                    } as any}
                                     className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start"
                                 >
                                     <Button
@@ -182,82 +257,21 @@ export default function HeroSection() {
                             </div>
                         </div>
                         {/* Mobile lanyard — only in hero section on small screens, 120% increase = h-[464px] * 2.20 = h-[1021px] */}
-                        <div className='block lg:hidden w-full h-[1021px] mt-8' aria-hidden="false">
-                            <LanyardWithControls
-                                position={[0, 0, 25]}
-                                containerClassName='w-full h-full select-none'
-                                defaultName="Light International"
-                            />
-                        </div>
+                        {!isDuplicate && (
+                            <div className='block lg:hidden w-full h-[1021px] mt-8' aria-hidden="false">
+                                <LanyardWithControls
+                                    position={[0, 0, 25]}
+                                    containerClassName='w-full h-full select-none'
+                                    defaultName="Light International"
+                                />
+                            </div>
+                        )}
                         {/* Spacer column so content doesn't sit behind the fixed lanyard on desktop */}
                         <div className='hidden lg:block' aria-hidden="true" />
                     </div>
                 </div>
             </section>
-            <section className="bg-blue-950 dark:bg-blue-950 text-white dark:text-white pb-16 md:pb-32 pt-8 md:pt-16 overflow-hidden">
-                <AnimatedGroup
-                    variants={{
-                        container: {
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.05,
-                                    delayChildren: 0.75,
-                                },
-                            },
-                        },
-                        ...transitionVariants,
-                    }}
-                    className="group relative m-auto max-w-6xl px-6"
-                >
-
-                    <div className="flex flex-col items-center md:flex-row">
-                        <div className="md:max-w-44 md:border-r md:pr-6 border-white/20">
-                            <p className="text-end text-sm font-mono uppercase text-white/70">Our Campuses</p>
-                        </div>
-                        <div className="relative py-6 md:w-[calc(100%-11rem)] overflow-hidden">
-                            <InfiniteSlider
-                                speedOnHover={20}
-                                speed={40}
-                                gap={112}>
-                                <Link href="/schools/nairobi-karen" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Karen</p>
-                                    <p className="text-xs text-white/60">KG – A Levels</p>
-                                </Link>
-                                <Link href="/schools/nairobi-lavington" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Lavington</p>
-                                    <p className="text-xs text-white/60">Year 4 – 10</p>
-                                </Link>
-                                <Link href="/schools/nairobi-kindergarten" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Nairobi Kindergarten</p>
-                                    <p className="text-xs text-white/60">Reception – Year 3</p>
-                                </Link>
-                                <Link href="/schools/mombasa" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Mombasa</p>
-                                    <p className="text-xs text-white/60">KG – A Levels</p>
-                                </Link>
-                                <Link href="/schools/malindi" className="flex flex-col items-center group">
-                                    <p className="text-sm font-semibold group-hover:text-sky-300 transition-colors">Malindi</p>
-                                    <p className="text-xs text-white/60">KG – A Levels</p>
-                                </Link>
-                            </InfiniteSlider>
-                            <div
-                                className="bg-linear-to-r from-blue-950 absolute inset-y-0 left-0 w-20"></div>
-                            <div
-                                className="bg-linear-to-l from-blue-950 absolute inset-y-0 right-0 w-20"></div>
-                            <ProgressiveBlur
-                                className="pointer-events-none absolute left-0 top-0 h-full w-20"
-                                direction="left"
-                                blurIntensity={1}
-                            />
-                            <ProgressiveBlur
-                                className="pointer-events-none absolute right-0 top-0 h-full w-20"
-                                direction="right"
-                                blurIntensity={1}
-                            />
-                        </div>
-                    </div>
-                </AnimatedGroup>
-            </section>
+            {!isDuplicate && renderCarousel(false)}
         </main>
     )
 }

@@ -159,7 +159,7 @@ export default function GlobalCommunity() {
                                 </h3>
                             </div>
                             <p className="text-sm md:text-base leading-relaxed text-white/85">
-                                The Banda School is situated on Magadi Road opposite the Nairobi National Park, in the tranquil suburb of Langata
+                                Light International School is situated on Co-operative College Road, off Karen Road, in the tranquil suburb of Karen
                             </p>
                             <Button
                                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-200 group-hover:translate-x-1"
@@ -222,7 +222,7 @@ export default function GlobalCommunity() {
                         <div className="bg-gradient-to-br from-blue-900 to-blue-950 rounded-lg p-8 md:p-10 text-white space-y-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-blue-800/50">
                             <div className="space-y-4">
                                 <h3 className="text-xl md:text-2xl font-bold leading-tight">
-                                    Our cultural roots are varied - we are so proud of the diversity of our children at The Banda.
+                                    Our cultural roots are varied - we are so proud of the diversity of our children at Light International School.
                                 </h3>
                                 <blockquote className="border-l-4 border-amber-400 pl-6 italic text-sm md:text-base text-white/90 space-y-2">
                                     <p>"Every individual matters. Every individual has a role to play. Every individual makes a difference."</p>
