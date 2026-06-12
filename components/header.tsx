@@ -102,16 +102,7 @@ export const HeroHeader = () => {
                                 />
                             </Link>
 
-                            <button
-                                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                className="p-2.5 -m-2.5 rounded-md hover:bg-accent"
-                                aria-label="Toggle theme">
-                                {mounted && theme === 'dark' ? (
-                                    <Sun className="size-5" />
-                                ) : (
-                                    <Moon className="size-5" />
-                                )}
-                            </button>
+                            <div className="w-10" />
                         </div>
 
                         <div
@@ -273,16 +264,7 @@ export const HeroHeader = () => {
                                     )
                                 }
                             })}
-                            <button
-                                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                className="p-2 -m-1 rounded-md hover:bg-accent ml-2"
-                                aria-label="Toggle theme">
-                                {mounted && theme === 'dark' ? (
-                                    <Sun className="size-5" />
-                                ) : (
-                                    <Moon className="size-5" />
-                                )}
-                            </button>
+                            {/* Theme toggle removed for forced dark theme */}
                         </div>
                     </div>
                 </div>
