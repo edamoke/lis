@@ -14,6 +14,14 @@ const campuses = [
     { label: 'Malindi', href: '/schools/malindi', grades: 'KG – A Levels' },
 ]
 
+const communityItems = [
+    { label: 'Student Life Hub', href: '/student-life', desc: 'Clubs, sports & council' },
+    { label: 'STEM & Innovation', href: '/innovation', desc: 'Project showcase' },
+    { label: 'Virtual Campus Tour', href: '/campus-tour', desc: 'Experience campuses' },
+    { label: 'Parent Portal', href: '/parent-portal', desc: 'PTA & guidelines' },
+    { label: 'Alumni Network', href: '/alumni', desc: 'Directory & stories' },
+]
+
 export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [mounted, setMounted] = React.useState(false)
@@ -27,6 +35,7 @@ export const HeroHeader = () => {
         { label: 'About', href: '/about' },
         { label: 'Academics', href: '/academics' },
         { label: 'Schools', href: '/schools' },
+        { label: 'Community', href: '#' },
     ]
     
     const rightMenuItems = [
@@ -108,39 +117,62 @@ export const HeroHeader = () => {
                         <div
                             className="bg-background in-data-[state=active]:flex mb-6 hidden w-full flex-col space-y-3 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 dark:shadow-none">
                             <div className="flex flex-col space-y-3">
-                                {[...leftMenuItems, ...rightMenuItems].map((item) =>
-                                    item.label === 'Schools' ? (
-                                        <div key="schools-mobile">
-                                            <p className="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Our Campuses</p>
-                                            {campuses.map((campus) => (
-                                                <Button
-                                                    key={campus.href}
-                                                    asChild
-                                                    variant="ghost"
-                                                    size="sm"
-                                                    className="w-full justify-start text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
-                                                    onClick={() => setMenuState(false)}>
-                                                    <Link href={campus.href}>
-                                                        <span>{campus.label}</span>
-                                                        <span className="ml-auto text-xs text-muted-foreground">{campus.grades}</span>
-                                                    </Link>
-                                                </Button>
-                                            ))}
-                                        </div>
-                                    ) : (
-                                        <Button
-                                            key={item.label}
-                                            asChild
-                                            variant="ghost"
-                                            size="sm"
-                                            className="text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
-                                            onClick={() => setMenuState(false)}>
-                                            <Link href={item.href}>
-                                                <span>{item.label}</span>
-                                            </Link>
-                                        </Button>
-                                    )
-                                )}
+                                {[...leftMenuItems, ...rightMenuItems].map((item) => {
+                                    if (item.label === 'Schools') {
+                                        return (
+                                            <div key="schools-mobile">
+                                                <p className="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Our Campuses</p>
+                                                {campuses.map((campus) => (
+                                                    <Button
+                                                        key={campus.href}
+                                                        asChild
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        className="w-full justify-start text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
+                                                        onClick={() => setMenuState(false)}>
+                                                        <Link href={campus.href}>
+                                                            <span>{campus.label}</span>
+                                                            <span className="ml-auto text-xs text-muted-foreground">{campus.grades}</span>
+                                                        </Link>
+                                                    </Button>
+                                                ))}
+                                            </div>
+                                        )
+                                    } else if (item.label === 'Community') {
+                                        return (
+                                            <div key="community-mobile">
+                                                <p className="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Community & Engagement</p>
+                                                {communityItems.map((cItem) => (
+                                                    <Button
+                                                        key={cItem.href}
+                                                        asChild
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        className="w-full justify-start text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
+                                                        onClick={() => setMenuState(false)}>
+                                                        <Link href={cItem.href}>
+                                                            <span>{cItem.label}</span>
+                                                        </Link>
+                                                    </Button>
+                                                ))}
+                                            </div>
+                                        )
+                                    } else {
+                                        return (
+                                            <Button
+                                                key={item.label}
+                                                asChild
+                                                variant="ghost"
+                                                size="sm"
+                                                className="text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20"
+                                                onClick={() => setMenuState(false)}>
+                                                <Link href={item.href}>
+                                                    <span>{item.label}</span>
+                                                </Link>
+                                            </Button>
+                                        )
+                                    }
+                                })}
                                 <Button
                                     asChild
                                     size="sm"
@@ -157,37 +189,64 @@ export const HeroHeader = () => {
                     <div className="hidden lg:flex items-center justify-between py-4 gap-4">
                         {/* Left Menu Items */}
                         <div className="flex items-center gap-1">
-                            {leftMenuItems.map((item) =>
-                                item.label === 'Schools' ? (
-                                    <div key="schools" className="relative group">
-                                        <button className="flex items-center gap-1 text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
-                                            Schools
-                                            <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
-                                        </button>
-                                        {/* Dropdown */}
-                                        <div className="absolute top-full left-0 mt-1 w-56 rounded-xl border border-white/10 bg-background/80 backdrop-blur-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-                                            <div className="p-1.5">
-                                                {campuses.map((campus) => (
-                                                    <Link
-                                                        key={campus.href}
-                                                        href={campus.href}
-                                                        className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors">
-                                                        <span className="text-sm font-medium">{campus.label}</span>
-                                                        <span className="text-xs text-muted-foreground">{campus.grades}</span>
-                                                    </Link>
-                                                ))}
+                            {leftMenuItems.map((item) => {
+                                if (item.label === 'Schools') {
+                                    return (
+                                        <div key="schools" className="relative group">
+                                            <button className="flex items-center gap-1 text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
+                                                Schools
+                                                <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                                            </button>
+                                            {/* Dropdown */}
+                                            <div className="absolute top-full left-0 mt-1 w-56 rounded-xl border border-white/10 bg-background/80 backdrop-blur-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                                <div className="p-1.5">
+                                                    {campuses.map((campus) => (
+                                                        <Link
+                                                            key={campus.href}
+                                                            href={campus.href}
+                                                            className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors">
+                                                            <span className="text-sm font-medium">{campus.label}</span>
+                                                            <span className="text-xs text-muted-foreground">{campus.grades}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ) : (
-                                    <Link
-                                        key={item.label}
-                                        href={item.href}
-                                        className="text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
-                                        {item.label}
-                                    </Link>
-                                )
-                            )}
+                                    )
+                                } else if (item.label === 'Community') {
+                                    return (
+                                        <div key="community" className="relative group">
+                                            <button className="flex items-center gap-1 text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
+                                                Community
+                                                <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                                            </button>
+                                            {/* Dropdown */}
+                                            <div className="absolute top-full left-0 mt-1 w-64 rounded-xl border border-white/10 bg-background/80 backdrop-blur-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                                <div className="p-1.5">
+                                                    {communityItems.map((cItem) => (
+                                                        <Link
+                                                            key={cItem.href}
+                                                            href={cItem.href}
+                                                            className="flex flex-col px-3 py-2 rounded-lg text-white hover:text-sky-400 hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors text-left">
+                                                            <span className="text-sm font-medium">{cItem.label}</span>
+                                                            <span className="text-[10px] text-muted-foreground leading-tight">{cItem.desc}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                } else {
+                                    return (
+                                        <Link
+                                            key={item.label}
+                                            href={item.href}
+                                            className="text-sm font-medium text-white hover:text-sky-400 px-3 py-1.5 rounded-md hover:bg-sky-500/10 dark:hover:bg-sky-500/20 transition-colors duration-150">
+                                            {item.label}
+                                        </Link>
+                                    )
+                                }
+                            })}
                         </div>
 
                         {/* Center Logo — fades out on scroll past hero section */}
