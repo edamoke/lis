@@ -32,7 +32,7 @@ const quickLinks = [
 
 export default function FooterSection() {
     return (
-        <footer className="relative bg-zinc-950 text-zinc-300 border-t border-zinc-900/50 pt-20 pb-10">
+        <footer className="relative bg-blue-950 text-zinc-300 border-t border-blue-900/50 pt-20 pb-10">
             {/* Background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -40,7 +40,7 @@ export default function FooterSection() {
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-zinc-900">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-blue-900">
                     
                     {/* Brand Section */}
                     <div className="lg:col-span-4 flex flex-col space-y-6">
@@ -54,7 +54,7 @@ export default function FooterSection() {
                             />
                             <div>
                                 <span className="block text-lg font-bold tracking-wider text-white">LIGHT</span>
-                                <span className="block text-xs font-semibold uppercase tracking-widest text-zinc-500">International School</span>
+                                <span className="block text-xs font-semibold uppercase tracking-widest text-zinc-400">International School</span>
                             </div>
                         </Link>
                         
@@ -63,19 +63,19 @@ export default function FooterSection() {
                         </p>
 
                         <div className="flex items-center gap-3">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Facebook">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-blue-900 hover:bg-blue-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Facebook">
                                 <Facebook className="size-4" />
                             </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Twitter">
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-blue-900 hover:bg-blue-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Twitter">
                                 <Twitter className="size-4" />
                             </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Instagram">
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-blue-900 hover:bg-blue-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="Instagram">
                                 <Instagram className="size-4" />
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="LinkedIn">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-blue-900 hover:bg-blue-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="LinkedIn">
                                 <Linkedin className="size-4" />
                             </a>
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="YouTube">
+                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-blue-900 hover:bg-blue-800 text-zinc-400 hover:text-white transition-colors duration-200" aria-label="YouTube">
                                 <Youtube className="size-4" />
                             </a>
                         </div>
