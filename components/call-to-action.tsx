@@ -6,15 +6,15 @@ import {transitionVariants} from "@/lib/utils";
 
 export default function CallToAction() {
     return (
-        <section className="py-16 mx-2">
-            <div className="mx-auto max-w-5xl rounded-3xl border px-6 py-12 md:py-20 lg:py-32">
+        <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-red-900 to-red-950 border-t border-b border-red-800/30 text-white relative z-40">
+            <div className="mx-auto max-w-5xl px-6">
                 <div className="text-center">
                     <TextEffect
                         triggerOnView
                         preset="fade-in-blur"
                         speedSegment={0.3}
                         as="h2"
-                        className="text-balance text-4xl font-semibold lg:text-5xl">
+                        className="text-balance text-4xl font-semibold lg:text-5xl text-white">
                         Ready to Join Light International School?
                     </TextEffect>
                     <TextEffect
@@ -23,8 +23,8 @@ export default function CallToAction() {
                         speedSegment={0.3}
                         delay={0.3}
                         as="p"
-                        className="mt-4 text-muted-foreground">
-                        Contact our admissions team to schedule a campus visit and discuss your child&apos;s educational journey.
+                        className="mt-4 text-red-100/80 max-w-2xl mx-auto">
+                        Contact our admissions team to schedule a campus visit and discuss your child's educational journey.
                     </TextEffect>
                     <AnimatedGroup
                         triggerOnView
@@ -58,20 +58,20 @@ export default function CallToAction() {
                             </Link>
                         </Button>
                     </AnimatedGroup>
-                    <div className="mt-12 pt-8 border-t">
-                        <p className="text-sm text-muted-foreground mb-4">Other Campuses:</p>
+                    <div className="mt-12 pt-8 border-t border-red-800/50">
+                        <p className="text-sm text-red-100/80 mb-4">Other Campuses:</p>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div>
-                                <p className="font-semibold text-sm">Mombasa</p>
-                                <p className="text-xs text-muted-foreground mt-1">+254 784 777 771</p>
+                                <p className="font-semibold text-sm text-white">Mombasa</p>
+                                <p className="text-xs text-red-100/70 mt-1">+254 784 777 771</p>
                             </div>
                             <div>
-                                <p className="font-semibold text-sm">Malindi</p>
-                                <p className="text-xs text-muted-foreground mt-1">+254 716 839 822</p>
+                                <p className="font-semibold text-sm text-white">Malindi</p>
+                                <p className="text-xs text-red-100/70 mt-1">+254 716 839 822</p>
                             </div>
                             <div>
-                                <p className="font-semibold text-sm">Kindergarten</p>
-                                <p className="text-xs text-muted-foreground mt-1">+254 728 663 764</p>
+                                <p className="font-semibold text-sm text-white">Kindergarten</p>
+                                <p className="text-xs text-red-100/70 mt-1">+254 728 663 764</p>
                             </div>
                         </div>
                     </div>
