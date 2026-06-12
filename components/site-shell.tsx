@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import Dither from '@/components/Dither'
 import FooterSection from '@/components/footer'
 import { HeroHeader } from '@/components/header'
+import AiChatbot from '@/components/ai-chatbot'
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -30,6 +31,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       </div>
       <HeroHeader />
       {children}
+      <AiChatbot />
       <FooterSection />
     </>
   )

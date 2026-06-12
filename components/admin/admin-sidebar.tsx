@@ -11,6 +11,9 @@ import {
   LogOut,
   ChevronRight,
   Globe,
+  Sparkles,
+  Columns,
+  Maximize2
 } from 'lucide-react'
 import { adminLogout } from '@/lib/cms-store'
 import { cn } from '@/lib/utils'
@@ -35,6 +38,21 @@ const navItems = [
       { label: 'Contact', href: '/admin/cms/pages?page=contact' },
       { label: 'Schools', href: '/admin/cms/schools' },
     ],
+  },
+  {
+    label: 'Visual Builder',
+    href: '/admin/website-builder',
+    icon: Maximize2,
+  },
+  {
+    label: 'AI News & Content',
+    href: '/admin/ai-news',
+    icon: Sparkles,
+  },
+  {
+    label: 'Admissions Kanban',
+    href: '/admin/kanban',
+    icon: Columns,
   },
   {
     label: 'Settings',
