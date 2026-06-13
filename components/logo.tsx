@@ -71,7 +71,7 @@ export const Logo = ({ className, ...props }: LogoProps) => {
             onUpdate(self) {
                 const velocity = Math.abs(self.getVelocity());
                 // Animate timescale based on scroll velocity (up or down)
-                const speed = gsap.utils.clamp(1, 10, velocity / 150);
+                const speed = gsap.utils.clamp(1, 10, velocity / 150) * 0.63;
                 
                 gsap.to(wingTl, {
                     timeScale: speed,

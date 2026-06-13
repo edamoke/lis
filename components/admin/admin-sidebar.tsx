@@ -13,7 +13,8 @@ import {
   Globe,
   Sparkles,
   Columns,
-  Maximize2
+  Maximize2,
+  Calendar
 } from 'lucide-react'
 import { adminLogout } from '@/lib/cms-store'
 import { cn } from '@/lib/utils'
@@ -53,6 +54,11 @@ const navItems = [
     label: 'Admissions Kanban',
     href: '/admin/kanban',
     icon: Columns,
+  },
+  {
+    label: 'Events & Bookings',
+    href: '/admin/events',
+    icon: Calendar,
   },
   {
     label: 'Settings',

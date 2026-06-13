@@ -93,21 +93,21 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
     const eventId = searchParams.get('event_id')
 
-    if (!eventId) {
-      return NextResponse.json(
-        { error: 'event_id parameter is required' },
-        { status: 400 }
-      )
+    const supabase = await createClient()
+    
+    let query = supabase
+      .from('event_registrations')
+      .select('*, events (title, city, date)')
+      .order('created_at', { ascending: false })
+
+    if (eventId) {
+      query = query.eq('event_id', eventId)
     }
 
-    const supabase = await createClient()
-    const { data, error } = await supabase
-      .from('event_registrations')
-      .select('*')
-      .eq('event_id', eventId)
-      .eq('status', 'registered')
+    const { data, error } = await query
 
     if (error) {
+      console.error('Error fetching event registrations:', error)
       return NextResponse.json(
         { error: 'Failed to fetch registrations' },
         { status: 500 }
