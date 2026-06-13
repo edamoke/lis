@@ -30,7 +30,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background">
       {/* Hero — edit title, subtitle, image and badge here */}
       <PageHero
-        image="/heroes/about.png"
+        image="/LAVINGTON-1000x600.jpg"
         badge="Our Story"
         title="About Light International"
         titleAccent="School"

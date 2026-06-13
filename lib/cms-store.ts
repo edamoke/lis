@@ -63,7 +63,7 @@ export const DEFAULT_SECTIONS: CmsSection[] = [
       badge: 'Our Story',
       title: 'About Light International School',
       subtitle: 'Two decades of nurturing future leaders through Cambridge excellence across Kenya.',
-      image: '/heroes/about.png',
+      image: '/LAVINGTON-1000x600.jpg',
     },
   },
   {
@@ -193,7 +193,7 @@ export const DEFAULT_SECTIONS: CmsSection[] = [
       badge: 'Nairobi',
       title: 'LIS Nairobi Lavington',
       subtitle: 'Academic Excellence at the Heart of Lavington',
-      image: '/schools/nairobi-lavington.png',
+      image: '/LIsting_mobile_07.webp',
     },
   },
   {

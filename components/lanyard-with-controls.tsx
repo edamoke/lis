@@ -10,7 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import CardTemplate, { type CardTemplateRef, type CardVariant } from "@/components/card-template";
-import { Download, Link, Check } from "lucide-react";
+import { Download, Link, Check, ChevronDown, ChevronUp } from "lucide-react";
 import { encryptLanyardData } from "@/lib/utils";
 
 // X (Twitter) icon component
@@ -73,6 +73,7 @@ export default function LanyardWithControls({
   const [isRegistering, setIsRegistering] = useState<boolean>(false);
   const [registrationError, setRegistrationError] = useState<string>("");
   const [registrationSuccess, setRegistrationSuccess] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -284,143 +285,169 @@ export default function LanyardWithControls({
       <div className="px-6 pb-8 lg:absolute lg:bottom-8 lg:right-6 lg:w-auto lg:px-0 z-10">
         <div className="mx-auto max-w-md lg:mx-0 lg:ml-auto">
           <div className="rounded-xl border border-border/80 bg-background/95 backdrop-blur-md p-5 shadow-lg space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Book Your Event Spot</span>
-              <div className="flex items-center gap-3">
-                <label className="flex cursor-pointer items-center gap-1.5">
-                  <input
-                    type="radio"
-                    name="cardVariant"
-                    value="dark"
-                    checked={cardVariant === "dark"}
-                    onChange={() => setCardVariant("dark")}
-                    className="sr-only"
-                  />
-                  <span
-                    className={`flex h-6 w-6 items-center justify-center rounded-full border-2 bg-black transition-all ${
-                      cardVariant === "dark"
-                        ? "border-primary ring-2 ring-primary/30"
-                        : "border-border"
-                    }`}
-                  >
-                    {cardVariant === "dark" && (
-                      <span className="h-2 w-2 rounded-full bg-white" />
-                    )}
-                  </span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-1.5">
-                  <input
-                    type="radio"
-                    name="cardVariant"
-                    value="light"
-                    checked={cardVariant === "light"}
-                    onChange={() => setCardVariant("light")}
-                    className="sr-only"
-                  />
-                  <span
-                    className={`flex h-6 w-6 items-center justify-center rounded-full border-2 bg-white transition-all ${
-                      cardVariant === "light"
-                        ? "border-primary ring-2 ring-primary/30"
-                        : "border-border"
-                    }`}
-                  >
-                    {cardVariant === "light" && (
-                      <span className="h-2 w-2 rounded-full bg-black" />
-                    )}
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              {/* Event Dropdown */}
-              <div className="space-y-1">
-                <label htmlFor="eventSelect" className="text-[11px] font-mono text-muted-foreground block">Select Campus Event</label>
-                <select
-                  id="eventSelect"
-                  value={selectedEventId}
-                  onChange={(e) => setSelectedEventId(e.target.value)}
-                  className="h-9 w-full rounded-md border border-border bg-background px-3 py-1 font-mono text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  {events.length === 0 ? (
-                    <option>Loading events...</option>
-                  ) : (
-                    events.map((ev) => (
-                      <option key={ev.id} value={ev.id}>
-                        {ev.title} ({ev.city})
-                      </option>
-                    ))
-                  )}
-                </select>
-              </div>
-
-              {/* Name Input */}
-              <div className="space-y-1">
-                <label htmlFor="userName" className="text-[11px] font-mono text-muted-foreground block">Lanyard Name</label>
-                <div className="relative">
-                  <input
-                    id="userName"
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Your Name"
-                    maxLength={MAX_CHARACTERS}
-                    className="h-9 w-full rounded-md border border-border bg-background px-3 py-2 pr-12 font-mono text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                  />
-                  <span
-                    className={`absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[9px] transition-colors ${
-                      isAtLimit ? "text-destructive" : "text-muted-foreground"
-                    }`}
-                  >
-                    {characterCount}/{MAX_CHARACTERS}
-                  </span>
-                </div>
-              </div>
-
-              {/* Email Input */}
-              <div className="space-y-1">
-                <label htmlFor="userEmail" className="text-[11px] font-mono text-muted-foreground block">Email Address</label>
-                <input
-                  id="userEmail"
-                  type="email"
-                  value={emailValue}
-                  onChange={(e) => setEmailValue(e.target.value)}
-                  placeholder="name@example.com"
-                  className="h-9 w-full rounded-md border border-border bg-background px-3 py-2 font-mono text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                />
-              </div>
-            </div>
-
-            {registrationError && (
-              <p className="text-xs text-destructive bg-destructive/10 p-2 rounded border border-destructive/20 font-mono text-center">
-                {registrationError}
-              </p>
-            )}
-
-            {registrationSuccess && (
-              <p className="text-xs text-emerald-500 bg-emerald-500/10 p-2 rounded border border-emerald-500/20 font-mono text-center">
-                Registered! Downloading lanyard texture...
-              </p>
-            )}
-
-            <Button
-              onClick={handleRegisterAndDownload}
-              disabled={isRegistering}
-              className="w-full gap-2 font-mono text-xs uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white"
-              size="default"
+            <div 
+              className="flex items-center justify-between cursor-pointer select-none gap-8"
+              onClick={() => setIsExpanded(!isExpanded)}
             >
-              {isRegistering ? (
-                <>
-                  <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                  Booking Spot...
-                </>
-              ) : (
-                <>
-                  <Download className="h-3.5 w-3.5" />
-                  Register & Download
-                </>
-              )}
-            </Button>
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Book Your Event Spot</span>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 p-0 hover:bg-muted"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsExpanded(!isExpanded);
+                }}
+              >
+                {isExpanded ? (
+                  <ChevronDown className="h-4 w-4" />
+                ) : (
+                  <ChevronUp className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
+
+            {isExpanded && (
+              <div className="space-y-4 pt-1 border-t border-border/50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-muted-foreground">Lanyard Style</span>
+                  <div className="flex items-center gap-3">
+                    <label className="flex cursor-pointer items-center gap-1.5">
+                      <input
+                        type="radio"
+                        name="cardVariant"
+                        value="dark"
+                        checked={cardVariant === "dark"}
+                        onChange={() => setCardVariant("dark")}
+                        className="sr-only"
+                      />
+                      <span
+                        className={`flex h-6 w-6 items-center justify-center rounded-full border-2 bg-black transition-all ${
+                          cardVariant === "dark"
+                            ? "border-primary ring-2 ring-primary/30"
+                            : "border-border"
+                        }`}
+                      >
+                        {cardVariant === "dark" && (
+                          <span className="h-2 w-2 rounded-full bg-white" />
+                        )}
+                      </span>
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-1.5">
+                      <input
+                        type="radio"
+                        name="cardVariant"
+                        value="light"
+                        checked={cardVariant === "light"}
+                        onChange={() => setCardVariant("light")}
+                        className="sr-only"
+                      />
+                      <span
+                        className={`flex h-6 w-6 items-center justify-center rounded-full border-2 bg-white transition-all ${
+                          cardVariant === "light"
+                            ? "border-primary ring-2 ring-primary/30"
+                            : "border-border"
+                        }`}
+                      >
+                        {cardVariant === "light" && (
+                          <span className="h-2 w-2 rounded-full bg-black" />
+                        )}
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Event Dropdown */}
+                  <div className="space-y-1">
+                    <label htmlFor="eventSelect" className="text-[11px] font-mono text-muted-foreground block">Select Campus Event</label>
+                    <select
+                      id="eventSelect"
+                      value={selectedEventId}
+                      onChange={(e) => setSelectedEventId(e.target.value)}
+                      className="h-9 w-full rounded-md border border-border bg-background px-3 py-1 font-mono text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      {events.length === 0 ? (
+                        <option>Loading events...</option>
+                      ) : (
+                        events.map((ev) => (
+                          <option key={ev.id} value={ev.id}>
+                            {ev.title} ({ev.city})
+                          </option>
+                        ))
+                      )}
+                    </select>
+                  </div>
+
+                  {/* Name Input */}
+                  <div className="space-y-1">
+                    <label htmlFor="userName" className="text-[11px] font-mono text-muted-foreground block">Lanyard Name</label>
+                    <div className="relative">
+                      <input
+                        id="userName"
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="Your Name"
+                        maxLength={MAX_CHARACTERS}
+                        className="h-9 w-full rounded-md border border-border bg-background px-3 py-2 pr-12 font-mono text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                      />
+                      <span
+                        className={`absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[9px] transition-colors ${
+                          isAtLimit ? "text-destructive" : "text-muted-foreground"
+                        }`}
+                      >
+                        {characterCount}/{MAX_CHARACTERS}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Email Input */}
+                  <div className="space-y-1">
+                    <label htmlFor="userEmail" className="text-[11px] font-mono text-muted-foreground block">Email Address</label>
+                    <input
+                      id="userEmail"
+                      type="email"
+                      value={emailValue}
+                      onChange={(e) => setEmailValue(e.target.value)}
+                      placeholder="name@example.com"
+                      className="h-9 w-full rounded-md border border-border bg-background px-3 py-2 font-mono text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    />
+                  </div>
+                </div>
+
+                {registrationError && (
+                  <p className="text-xs text-destructive bg-destructive/10 p-2 rounded border border-destructive/20 font-mono text-center">
+                    {registrationError}
+                  </p>
+                )}
+
+                {registrationSuccess && (
+                  <p className="text-xs text-emerald-500 bg-emerald-500/10 p-2 rounded border border-emerald-500/20 font-mono text-center">
+                    Registered! Downloading lanyard texture...
+                  </p>
+                )}
+
+                <Button
+                  onClick={handleRegisterAndDownload}
+                  disabled={isRegistering}
+                  className="w-full gap-2 font-mono text-xs uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white"
+                  size="default"
+                >
+                  {isRegistering ? (
+                    <>
+                      <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Booking Spot...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-3.5 w-3.5" />
+                      Register & Download
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </div>
           
           {/* Share buttons - only visible when registration was successful */}

@@ -14,7 +14,7 @@ export const metadata = {
 
 const imageMap: Record<string, string> = {
   'nairobi-karen': '/schools/nairobi-karen.png',
-  'nairobi-lavington': '/schools/nairobi-lavington.png',
+  'nairobi-lavington': '/LIsting_mobile_07.webp',
   'nairobi-kindergarten': '/schools/nairobi-kindergarten.png',
   'mombasa': '/schools/mombasa.png',
   'malindi': '/schools/malindi.png',
