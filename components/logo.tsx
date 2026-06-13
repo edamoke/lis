@@ -43,6 +43,9 @@ export const Logo = ({ className, ...props }: LogoProps) => {
             yoyo: true
         });
 
+        // Initialize with timeScale 0 so it doesn't animate on load
+        wingTl.timeScale(0);
+
         wingTl.to(leftWing, {
             rotation: -18,
             scaleY: 0.92,
@@ -60,19 +63,42 @@ export const Logo = ({ className, ...props }: LogoProps) => {
         // ===============================
         // SCROLL SPEED CONTROL
         // ===============================
+        let scrollTimeout: NodeJS.Timeout;
+
         const trigger = ScrollTrigger.create({
             start: 0,
             end: 'max',
             onUpdate(self) {
                 const velocity = Math.abs(self.getVelocity());
-                const speed = gsap.utils.clamp(1, 10, velocity / 300);
-                wingTl.timeScale(speed);
+                // Animate timescale based on scroll velocity (up or down)
+                const speed = gsap.utils.clamp(1, 10, velocity / 150);
+                
+                gsap.to(wingTl, {
+                    timeScale: speed,
+                    duration: 0.1,
+                    overwrite: 'auto'
+                });
+
+                // Clear previous timeout and set a new one to smoothly pause when scrolling stops
+                if (typeof window !== 'undefined') {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        gsap.to(wingTl, {
+                            timeScale: 0,
+                            duration: 0.4,
+                            overwrite: 'auto'
+                        });
+                    }, 120);
+                }
             }
         });
 
         return () => {
             wingTl.kill();
             trigger.kill();
+            if (typeof window !== 'undefined') {
+                clearTimeout(scrollTimeout);
+            }
         };
     }, []);
 
