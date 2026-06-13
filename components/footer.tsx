@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from "react"
-import Image from 'next/image'
+import { Logo } from '@/components/logo'
 import { 
     Facebook, 
     Twitter, 
@@ -45,13 +45,7 @@ export default function FooterSection() {
                     {/* Brand Section */}
                     <div className="lg:col-span-4 flex flex-col space-y-6">
                         <Link href="/" aria-label="Home" className="flex items-center gap-3">
-                            <Image 
-                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logoe2-eXj4lw1EpKiFCgxXXVYOWalbObTTwo.png"
-                                alt="Light International School Logo"
-                                width={60}
-                                height={60}
-                                className="object-contain"
-                            />
+                            <Logo className="h-14 w-14" />
                             <div>
                                 <span className="block text-lg font-bold tracking-wider text-white">LIGHT</span>
                                 <span className="block text-xs font-semibold uppercase tracking-widest text-zinc-400">International School</span>

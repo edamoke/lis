@@ -3,8 +3,8 @@ import Link from 'next/link'
 import {Menu, X, Moon, Sun, ChevronDown} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import React from 'react'
-import Image from 'next/image'
 import { useTheme } from 'next-themes'
+import { Logo } from '@/components/logo'
 
 const campuses = [
     { label: 'Nairobi Karen', href: '/schools/nairobi-karen', grades: 'KG – A Levels' },
@@ -93,13 +93,7 @@ export const HeroHeader = () => {
                                 href="/"
                                 aria-label="home"
                                 className="flex flex-1 justify-center items-center">
-                                <Image 
-                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logoe2-eXj4lw1EpKiFCgxXXVYOWalbObTTwo.png"
-                                    alt="Light International School Logo"
-                                    width={40}
-                                    height={40}
-                                    className='object-contain'
-                                />
+                                <Logo className="h-[150px] w-[150px]" />
                             </Link>
 
                             <div className="w-10" />
@@ -216,15 +210,7 @@ export const HeroHeader = () => {
                             className="flex flex-shrink-0 items-center transition-opacity duration-300"
                             ref={logoRef}
                             style={{ opacity: logoOpacity }}>
-                            <div style={{ transform: `rotate(${rotation}deg)`, transition: 'transform 0.1s ease-out' }}>
-                                <Image 
-                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logoe2-eXj4lw1EpKiFCgxXXVYOWalbObTTwo.png"
-                                    alt="Light International School Logo"
-                                    width={144}
-                                    height={144}
-                                    className='object-contain'
-                                />
-                            </div>
+                            <Logo className="h-[180px] w-[180px]" />
                         </Link>
 
                         {/* Right Menu Items + Theme Toggle */}

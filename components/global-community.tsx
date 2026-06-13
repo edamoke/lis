@@ -121,7 +121,7 @@ export default function GlobalCommunity() {
                         A LEADING INTERNATIONAL SCHOOL IN KENYA
                     </p>
                     <h2 className="text-balance text-4xl md:text-5xl font-bold mb-8">
-                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 bg-clip-text text-transparent">
+                        <span className="text-blue-600">
                             Our Global School
                         </span>
                         <br />
