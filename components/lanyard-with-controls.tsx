@@ -265,7 +265,7 @@ export default function LanyardWithControls({
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="relative flex flex-col h-full w-full overflow-hidden">
       {/* Hidden card template for texture generation */}
       <CardTemplate
         ref={cardTemplateRef}
@@ -282,18 +282,18 @@ export default function LanyardWithControls({
         cardTextureUrl={cardTextureUrl}
         canvasRef={canvasRef}
       />
-      <div className="px-6 pb-8 lg:absolute lg:bottom-8 lg:right-6 lg:w-auto lg:px-0 z-10">
-        <div className="mx-auto max-w-md lg:mx-0 lg:ml-auto">
-          <div className="rounded-xl border border-border/80 bg-background/95 backdrop-blur-md p-5 shadow-lg space-y-4">
+      <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-[360px] md:bottom-6 md:right-6 lg:bottom-8 lg:right-8 z-20">
+        <div className="w-full">
+          <div className="rounded-xl border border-border/80 bg-background/95 backdrop-blur-md p-4 sm:p-5 shadow-lg space-y-3 sm:space-y-4 max-h-[75vh] flex flex-col">
             <div 
-              className="flex items-center justify-between cursor-pointer select-none gap-8"
+              className="flex items-center justify-between cursor-pointer select-none gap-4"
               onClick={() => setIsExpanded(!isExpanded)}
             >
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Book Your Event Spot</span>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-6 w-6 p-0 hover:bg-muted"
+                className="h-6 w-6 p-0 hover:bg-muted shrink-0"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsExpanded(!isExpanded);
@@ -308,7 +308,7 @@ export default function LanyardWithControls({
             </div>
 
             {isExpanded && (
-              <div className="space-y-4 pt-1 border-t border-border/50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="space-y-4 pt-2 border-t border-border/50 animate-in fade-in slide-in-from-top-2 duration-200 overflow-y-auto max-h-[55vh] pr-1">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-mono text-muted-foreground">Lanyard Style</span>
                   <div className="flex items-center gap-3">
