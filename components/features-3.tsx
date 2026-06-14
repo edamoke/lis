@@ -7,39 +7,36 @@ import {AnimatedGroup} from "@/components/motion-primitives/animated-group";
 
 export default function Features() {
     return (
-        <section className="py-16 md:py-32 bg-[#F3F3F3] dark:bg-[#F3F3F3] text-zinc-900 dark:text-zinc-900 relative z-40">
-            <div className="mx-auto max-w-5xl px-6">
+        <section className="py-16 md:py-32 bg-gradient-to-br from-red-900 to-red-950 border-t border-b border-red-800/30 text-white relative z-40">
+            <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center mb-8 md:mb-16">
                     <TextEffect
                         triggerOnView
                         preset="fade-in-blur"
                         speedSegment={0.3}
                         as="h2"
-                        className="text-balance text-4xl font-semibold lg:text-5xl">
+                        className="text-balance text-4xl font-semibold lg:text-5xl text-white">
                         Why Choose Light International School?
                     </TextEffect>
                 </div>
-            </div>
 
-            <div className="w-full bg-gradient-to-br from-red-900 to-red-950 border-t border-b border-red-800/30 py-12 md:py-20">
-                <div className="@container mx-auto max-w-5xl px-6">
-                    <AnimatedGroup
-                        triggerOnView
-                        variants={{
-                            container: {
-                                visible: {
-                                    transition: {
-                                        staggerChildren: 0.05,
-                                        delayChildren: 0.75,
-                                    },
+                <AnimatedGroup
+                    triggerOnView
+                    variants={{
+                        container: {
+                            visible: {
+                                transition: {
+                                    staggerChildren: 0.05,
+                                    delayChildren: 0.75,
                                 },
                             },
-                            ...transitionVariants,
-                        }}
-                    >
-                        <Card
-                            className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto grid max-w-sm divide-y overflow-hidden bg-transparent border-0 shadow-none text-white divide-red-800/50 py-0 rounded-none *:text-center">
-                            <div className="group shadow-zinc-950/5">
+                        },
+                        ...transitionVariants,
+                    }}
+                >
+                    <Card
+                        className="@min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0 mx-auto grid max-w-sm divide-y overflow-hidden bg-transparent border-0 shadow-none text-white divide-red-800/50 py-0 rounded-none *:text-center">
+                        <div className="group shadow-zinc-950/5">
                             <CardHeader className="pb-3">
                                 <CardDecorator>
                                     <BookOpen
@@ -91,7 +88,6 @@ export default function Features() {
                         </div>
                     </Card>
                 </AnimatedGroup>
-                </div>
             </div>
         </section>
     )
