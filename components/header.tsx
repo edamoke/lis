@@ -53,17 +53,24 @@ export const HeroHeader = () => {
             const scrollTop = window.scrollY
             setRotation(scrollTop * 0.5)
 
-            // Fade out the logo as it approaches the end of the hero section.
-            // Hero is ~100vh. Start fading at 60vh, fully gone by 90vh.
-            const heroHeight = window.innerHeight
-            const fadeStart = heroHeight * 0.60
-            const fadeEnd   = heroHeight * 0.90
-            if (scrollTop <= fadeStart) {
-                setLogoOpacity(1)
-            } else if (scrollTop >= fadeEnd) {
-                setLogoOpacity(0)
+            // Fade out the logo when approaching the footer section.
+            const footerElement = document.querySelector('footer')
+            if (footerElement) {
+                const footerRect = footerElement.getBoundingClientRect()
+                const viewportHeight = window.innerHeight
+                
+                const fadeStart = viewportHeight
+                const fadeEnd = viewportHeight - 150
+                
+                if (footerRect.top > fadeStart) {
+                    setLogoOpacity(1)
+                } else if (footerRect.top < fadeEnd) {
+                    setLogoOpacity(0)
+                } else {
+                    setLogoOpacity((footerRect.top - fadeEnd) / (fadeStart - fadeEnd))
+                }
             } else {
-                setLogoOpacity(1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart))
+                setLogoOpacity(1)
             }
         }
 
