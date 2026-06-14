@@ -53,14 +53,13 @@ export const HeroHeader = () => {
             const scrollTop = window.scrollY
             setRotation(scrollTop * 0.5)
 
-            // Fade out the logo when approaching the footer section.
+            // Fade out the logo only when it actually reaches the footer section at the top of the screen.
             const footerElement = document.querySelector('footer')
             if (footerElement) {
                 const footerRect = footerElement.getBoundingClientRect()
-                const viewportHeight = window.innerHeight
                 
-                const fadeStart = viewportHeight
-                const fadeEnd = viewportHeight - 150
+                const fadeStart = 200
+                const fadeEnd = 50
                 
                 if (footerRect.top > fadeStart) {
                     setLogoOpacity(1)
@@ -210,13 +209,12 @@ export const HeroHeader = () => {
                             })}
                         </div>
 
-                        {/* Center Logo — fades out on scroll past hero section */}
+                        {/* Center Logo — stays visible on scroll */}
                         <Link
                             href="/"
                             aria-label="home"
-                            className="flex flex-shrink-0 items-center transition-opacity duration-300"
-                            ref={logoRef}
-                            style={{ opacity: logoOpacity }}>
+                            className="flex flex-shrink-0 items-center"
+                            ref={logoRef}>
                             <Logo className="h-[180px] w-[180px]" />
                         </Link>
 
